@@ -1,0 +1,63 @@
+[2025-07-20T07:47:15.360+0000] {processor.py:157} INFO - Started process (PID=1958) to work on /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:47:15.360+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_taxi_iceberg_etl.py for tasks to queue
+[2025-07-20T07:47:15.361+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:47:15.361+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:47:15.574+0000] {processor.py:839} INFO - DAG(s) dict_keys(['nyc_taxi_iceberg_etl']) retrieved from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:47:15.594+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:47:15.594+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-07-20T07:47:15.609+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:47:15.609+0000] {dag.py:3696} INFO - Setting next_dagrun for nyc_taxi_iceberg_etl to 2025-07-20T01:47:15.609187+00:00, run_after=2025-07-20T07:47:15.609187+00:00
+[2025-07-20T07:47:15.620+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_taxi_iceberg_etl.py took 0.262 seconds
+[2025-07-20T07:47:46.093+0000] {processor.py:157} INFO - Started process (PID=1993) to work on /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:47:46.099+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_taxi_iceberg_etl.py for tasks to queue
+[2025-07-20T07:47:46.100+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:47:46.100+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:47:46.273+0000] {processor.py:839} INFO - DAG(s) dict_keys(['nyc_taxi_iceberg_etl']) retrieved from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:47:46.298+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:47:46.298+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-07-20T07:47:46.310+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:47:46.310+0000] {dag.py:3696} INFO - Setting next_dagrun for nyc_taxi_iceberg_etl to 2025-07-20T01:47:46.310706+00:00, run_after=2025-07-20T07:47:46.310706+00:00
+[2025-07-20T07:47:46.322+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_taxi_iceberg_etl.py took 0.233 seconds
+[2025-07-20T07:48:16.738+0000] {processor.py:157} INFO - Started process (PID=2028) to work on /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:48:16.739+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_taxi_iceberg_etl.py for tasks to queue
+[2025-07-20T07:48:16.742+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:48:16.741+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:48:16.994+0000] {processor.py:839} INFO - DAG(s) dict_keys(['nyc_taxi_iceberg_etl']) retrieved from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:48:17.020+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:48:17.019+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-07-20T07:48:17.033+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:48:17.033+0000] {dag.py:3696} INFO - Setting next_dagrun for nyc_taxi_iceberg_etl to 2025-07-20T01:48:17.033414+00:00, run_after=2025-07-20T07:48:17.033414+00:00
+[2025-07-20T07:48:17.048+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_taxi_iceberg_etl.py took 0.314 seconds
+[2025-07-20T07:48:47.575+0000] {processor.py:157} INFO - Started process (PID=2063) to work on /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:48:47.577+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_taxi_iceberg_etl.py for tasks to queue
+[2025-07-20T07:48:47.578+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:48:47.578+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:48:47.768+0000] {processor.py:839} INFO - DAG(s) dict_keys(['nyc_taxi_iceberg_etl']) retrieved from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:48:47.783+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:48:47.783+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-07-20T07:48:47.796+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:48:47.795+0000] {dag.py:3696} INFO - Setting next_dagrun for nyc_taxi_iceberg_etl to 2025-07-20T01:48:47.795684+00:00, run_after=2025-07-20T07:48:47.795684+00:00
+[2025-07-20T07:48:47.933+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_taxi_iceberg_etl.py took 0.364 seconds
+[2025-07-20T07:49:18.277+0000] {processor.py:157} INFO - Started process (PID=2098) to work on /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:49:18.282+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_taxi_iceberg_etl.py for tasks to queue
+[2025-07-20T07:49:18.283+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:49:18.283+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:49:18.476+0000] {processor.py:839} INFO - DAG(s) dict_keys(['nyc_taxi_iceberg_etl']) retrieved from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:49:18.489+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:49:18.489+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-07-20T07:49:18.498+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:49:18.498+0000] {dag.py:3696} INFO - Setting next_dagrun for nyc_taxi_iceberg_etl to 2025-07-20T01:49:18.498231+00:00, run_after=2025-07-20T07:49:18.498231+00:00
+[2025-07-20T07:49:18.505+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_taxi_iceberg_etl.py took 0.230 seconds
+[2025-07-20T07:49:48.912+0000] {processor.py:157} INFO - Started process (PID=2133) to work on /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:49:48.913+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_taxi_iceberg_etl.py for tasks to queue
+[2025-07-20T07:49:48.915+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:49:48.914+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:49:49.079+0000] {processor.py:839} INFO - DAG(s) dict_keys(['nyc_taxi_iceberg_etl']) retrieved from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:49:49.114+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:49:49.113+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-07-20T07:49:49.246+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:49:49.246+0000] {dag.py:3696} INFO - Setting next_dagrun for nyc_taxi_iceberg_etl to 2025-07-20T01:49:49.246236+00:00, run_after=2025-07-20T07:49:49.246236+00:00
+[2025-07-20T07:49:49.255+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_taxi_iceberg_etl.py took 0.346 seconds
+[2025-07-20T07:50:19.585+0000] {processor.py:157} INFO - Started process (PID=2168) to work on /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:50:19.588+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_taxi_iceberg_etl.py for tasks to queue
+[2025-07-20T07:50:19.588+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:50:19.588+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:50:19.751+0000] {processor.py:839} INFO - DAG(s) dict_keys(['nyc_taxi_iceberg_etl']) retrieved from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:50:19.766+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:50:19.766+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-07-20T07:50:19.778+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:50:19.777+0000] {dag.py:3696} INFO - Setting next_dagrun for nyc_taxi_iceberg_etl to 2025-07-20T01:50:19.777889+00:00, run_after=2025-07-20T07:50:19.777889+00:00
+[2025-07-20T07:50:19.785+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_taxi_iceberg_etl.py took 0.202 seconds
+[2025-07-20T07:50:50.174+0000] {processor.py:157} INFO - Started process (PID=2203) to work on /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:50:50.178+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_taxi_iceberg_etl.py for tasks to queue
+[2025-07-20T07:50:50.180+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:50:50.179+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:50:50.380+0000] {processor.py:839} INFO - DAG(s) dict_keys(['nyc_taxi_iceberg_etl']) retrieved from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:50:50.399+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:50:50.399+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-07-20T07:50:50.520+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:50:50.520+0000] {dag.py:3696} INFO - Setting next_dagrun for nyc_taxi_iceberg_etl to 2025-07-20T01:50:50.520700+00:00, run_after=2025-07-20T07:50:50.520700+00:00
+[2025-07-20T07:50:50.530+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_taxi_iceberg_etl.py took 0.359 seconds
+[2025-07-20T07:51:20.949+0000] {processor.py:157} INFO - Started process (PID=2238) to work on /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:51:20.953+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_taxi_iceberg_etl.py for tasks to queue
+[2025-07-20T07:51:20.954+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:51:20.954+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:51:21.151+0000] {processor.py:839} INFO - DAG(s) dict_keys(['nyc_taxi_iceberg_etl']) retrieved from /opt/airflow/dags/nyc_taxi_iceberg_etl.py
+[2025-07-20T07:51:21.173+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:51:21.173+0000] {dag.py:2915} INFO - Sync 1 DAGs
+[2025-07-20T07:51:21.184+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:51:21.183+0000] {dag.py:3696} INFO - Setting next_dagrun for nyc_taxi_iceberg_etl to 2025-07-20T01:51:21.183882+00:00, run_after=2025-07-20T07:51:21.183882+00:00
+[2025-07-20T07:51:21.328+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_taxi_iceberg_etl.py took 0.381 seconds

@@ -1,0 +1,135 @@
+[2025-07-20T07:47:15.637+0000] {processor.py:157} INFO - Started process (PID=1967) to work on /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:47:15.637+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_weather_etl.py for tasks to queue
+[2025-07-20T07:47:15.638+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:47:15.637+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:47:15.643+0000] {logging_mixin.py:151} INFO - Airflow not available in this environment
+[2025-07-20T07:47:15.792+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:47:15.791+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/nyc_weather_etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/nyc_weather_etl.py", line 192, in <module>
+    spark_weather_etl_task = SparkSubmitOperator(
+NameError: name 'SparkSubmitOperator' is not defined
+[2025-07-20T07:47:15.792+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:47:15.807+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_weather_etl.py took 0.172 seconds
+[2025-07-20T07:47:46.341+0000] {processor.py:157} INFO - Started process (PID=2000) to work on /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:47:46.342+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_weather_etl.py for tasks to queue
+[2025-07-20T07:47:46.342+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:47:46.342+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:47:46.347+0000] {logging_mixin.py:151} INFO - Airflow not available in this environment
+[2025-07-20T07:47:46.471+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:47:46.471+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/nyc_weather_etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/nyc_weather_etl.py", line 192, in <module>
+    spark_weather_etl_task = SparkSubmitOperator(
+NameError: name 'SparkSubmitOperator' is not defined
+[2025-07-20T07:47:46.472+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:47:46.480+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_weather_etl.py took 0.141 seconds
+[2025-07-20T07:48:17.061+0000] {processor.py:157} INFO - Started process (PID=2037) to work on /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:48:17.062+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_weather_etl.py for tasks to queue
+[2025-07-20T07:48:17.062+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:48:17.062+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:48:17.064+0000] {logging_mixin.py:151} INFO - Airflow not available in this environment
+[2025-07-20T07:48:17.231+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:48:17.230+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/nyc_weather_etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/nyc_weather_etl.py", line 192, in <module>
+    spark_weather_etl_task = SparkSubmitOperator(
+NameError: name 'SparkSubmitOperator' is not defined
+[2025-07-20T07:48:17.231+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:48:17.253+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_weather_etl.py took 0.194 seconds
+[2025-07-20T07:48:47.825+0000] {processor.py:157} INFO - Started process (PID=2070) to work on /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:48:47.826+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_weather_etl.py for tasks to queue
+[2025-07-20T07:48:47.826+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:48:47.826+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:48:47.829+0000] {logging_mixin.py:151} INFO - Airflow not available in this environment
+[2025-07-20T07:48:48.009+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:48:48.008+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/nyc_weather_etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/nyc_weather_etl.py", line 192, in <module>
+    spark_weather_etl_task = SparkSubmitOperator(
+NameError: name 'SparkSubmitOperator' is not defined
+[2025-07-20T07:48:48.009+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:48:48.018+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_weather_etl.py took 0.195 seconds
+[2025-07-20T07:49:18.516+0000] {processor.py:157} INFO - Started process (PID=2107) to work on /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:49:18.517+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_weather_etl.py for tasks to queue
+[2025-07-20T07:49:18.517+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:49:18.517+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:49:18.521+0000] {logging_mixin.py:151} INFO - Airflow not available in this environment
+[2025-07-20T07:49:18.630+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:49:18.629+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/nyc_weather_etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/nyc_weather_etl.py", line 192, in <module>
+    spark_weather_etl_task = SparkSubmitOperator(
+NameError: name 'SparkSubmitOperator' is not defined
+[2025-07-20T07:49:18.630+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:49:18.638+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_weather_etl.py took 0.123 seconds
+[2025-07-20T07:49:49.265+0000] {processor.py:157} INFO - Started process (PID=2142) to work on /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:49:49.266+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_weather_etl.py for tasks to queue
+[2025-07-20T07:49:49.266+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:49:49.266+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:49:49.269+0000] {logging_mixin.py:151} INFO - Airflow not available in this environment
+[2025-07-20T07:49:49.390+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:49:49.389+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/nyc_weather_etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/nyc_weather_etl.py", line 192, in <module>
+    spark_weather_etl_task = SparkSubmitOperator(
+NameError: name 'SparkSubmitOperator' is not defined
+[2025-07-20T07:49:49.390+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:49:49.398+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_weather_etl.py took 0.135 seconds
+[2025-07-20T07:50:19.797+0000] {processor.py:157} INFO - Started process (PID=2177) to work on /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:50:19.798+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_weather_etl.py for tasks to queue
+[2025-07-20T07:50:19.798+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:50:19.798+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:50:19.800+0000] {logging_mixin.py:151} INFO - Airflow not available in this environment
+[2025-07-20T07:50:19.914+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:50:19.913+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/nyc_weather_etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/nyc_weather_etl.py", line 192, in <module>
+    spark_weather_etl_task = SparkSubmitOperator(
+NameError: name 'SparkSubmitOperator' is not defined
+[2025-07-20T07:50:19.914+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:50:19.923+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_weather_etl.py took 0.127 seconds
+[2025-07-20T07:50:50.543+0000] {processor.py:157} INFO - Started process (PID=2212) to work on /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:50:50.543+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_weather_etl.py for tasks to queue
+[2025-07-20T07:50:50.544+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:50:50.543+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:50:50.545+0000] {logging_mixin.py:151} INFO - Airflow not available in this environment
+[2025-07-20T07:50:50.660+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:50:50.659+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/nyc_weather_etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/nyc_weather_etl.py", line 192, in <module>
+    spark_weather_etl_task = SparkSubmitOperator(
+NameError: name 'SparkSubmitOperator' is not defined
+[2025-07-20T07:50:50.660+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:50:50.668+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_weather_etl.py took 0.127 seconds
+[2025-07-20T07:51:21.217+0000] {processor.py:157} INFO - Started process (PID=2245) to work on /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:51:21.218+0000] {processor.py:829} INFO - Processing file /opt/airflow/dags/nyc_weather_etl.py for tasks to queue
+[2025-07-20T07:51:21.218+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:51:21.218+0000] {dagbag.py:539} INFO - Filling up the DagBag from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:51:21.221+0000] {logging_mixin.py:151} INFO - Airflow not available in this environment
+[2025-07-20T07:51:21.376+0000] {logging_mixin.py:151} INFO - [2025-07-20T07:51:21.372+0000] {dagbag.py:347} ERROR - Failed to import: /opt/airflow/dags/nyc_weather_etl.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/dagbag.py", line 343, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 843, in exec_module
+  File "<frozen importlib._bootstrap>", line 219, in _call_with_frames_removed
+  File "/opt/airflow/dags/nyc_weather_etl.py", line 192, in <module>
+    spark_weather_etl_task = SparkSubmitOperator(
+NameError: name 'SparkSubmitOperator' is not defined
+[2025-07-20T07:51:21.377+0000] {processor.py:841} WARNING - No viable dags retrieved from /opt/airflow/dags/nyc_weather_etl.py
+[2025-07-20T07:51:21.391+0000] {processor.py:179} INFO - Processing /opt/airflow/dags/nyc_weather_etl.py took 0.175 seconds
