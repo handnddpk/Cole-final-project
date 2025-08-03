@@ -8,7 +8,7 @@ echo "Proceeding with Airflow initialization..."
 
 # Install additional packages
 echo "Installing Python packages..."
-pip install --quiet --no-cache-dir \
+pip install --no-cache-dir \
     apache-airflow-providers-apache-spark \
     apache-airflow-providers-postgres \
     pyspark==3.5.0 \

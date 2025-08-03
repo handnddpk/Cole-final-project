@@ -162,6 +162,8 @@ docker-compose up -d
 - **MinIO Console**: http://localhost:9001
 - **Kafka Control Center**: http://localhost:9021
 - **Kafka Connect API**: http://localhost:8083
+- **Analytics API**: http://localhost:8000
+- **Analytics Dashboard**: http://localhost:8501
 
 ## Data Pipeline Execution
 
@@ -331,4 +333,51 @@ docker-compose logs airflow-scheduler
 - Mobile applications
 - Third-party integrations
 
-This pipeline demonstrates modern data engineering best practices including CDC, lakehouse architecture, real-time processing, and ML feature engineering, providing a foundation for production-grade data platforms.
+## Serving Layer APIs and Dashboards
+
+### REST API (FastAPI)
+The analytics API provides programmatic access to all pipeline data:
+
+**Key Endpoints:**
+- `GET /api/v1/dashboard/stats` - Real-time dashboard metrics
+- `GET /api/v1/trips/recent` - Recent trip data
+- `GET /api/v1/analytics/zones` - Zone performance analysis
+- `GET /api/v1/analytics/weather-impact` - Weather correlation data
+- `GET /api/v1/predictions/demand` - ML-powered demand forecasting
+- `GET /api/v1/realtime/activity` - Live zone activity monitoring
+
+**Access:** http://localhost:8000 (API), http://localhost:8000/docs (Documentation)
+
+### Interactive Dashboard (Streamlit)
+Comprehensive web dashboard for data exploration and visualization:
+
+**Features:**
+- Real-time KPIs and performance metrics
+- Interactive time series charts
+- Zone performance analysis with maps
+- Weather impact visualization
+- Demand prediction charts
+- Real-time activity monitoring
+- Data export capabilities
+
+**Access:** http://localhost:8501
+
+### Python Client Library
+Easy-to-use Python SDK for API integration:
+
+```python
+from serving.client import LakehouseClient
+
+client = LakehouseClient()
+stats = client.get_dashboard_stats()
+trips_df = client.get_recent_trips(limit=100)
+predictions_df = client.get_demand_predictions(hours_ahead=24)
+```
+
+### Service URLs (Updated)
+- **Airflow UI**: http://localhost:8080
+- **Analytics API**: http://localhost:8000
+- **Analytics Dashboard**: http://localhost:8501
+- **Spark Master**: http://localhost:8070
+- **MinIO Console**: http://localhost:9001
+- **Kafka Control Center**: http://localhost:9021

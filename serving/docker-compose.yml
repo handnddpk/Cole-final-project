@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  # Analytics API
+  analytics-api:
+    build: .
+    container_name: analytics-api
+    command: uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=taxi_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - API_KEY=demo-api-key-2024
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+  # Analytics Dashboard
+  analytics-dashboard:
+    build: .
+    container_name: analytics-dashboard
+    command: streamlit run dashboard.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    environment:
+      - API_BASE_URL=http://analytics-api:8000/api/v1
+      - API_KEY=demo-api-key-2024
+    volumes:
+      - .:/app
+    depends_on:
+      - analytics-api
+    restart: unless-stopped
+
+  # Redis for caching (optional)
+  redis:
+    image: redis:7.2-alpine
+    container_name: analytics-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: analytics-network

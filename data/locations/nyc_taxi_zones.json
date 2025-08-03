@@ -1,0 +1,178 @@
+[
+  {
+    "location_id": 1,
+    "borough": "Manhattan",
+    "zone": "Financial District",
+    "lat": 40.7074,
+    "lon": -74.0113,
+    "zone_type": "neighborhood",
+    "is_tourist_area": false,
+    "is_business_district": true,
+    "created_at": "2025-08-03T09:25:21.645661"
+  },
+  {
+    "location_id": 4,
+    "borough": "Manhattan",
+    "zone": "Times Square",
+    "lat": 40.7589,
+    "lon": -73.9851,
+    "zone_type": "neighborhood",
+    "is_tourist_area": true,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645663"
+  },
+  {
+    "location_id": 13,
+    "borough": "Manhattan",
+    "zone": "Central Park",
+    "lat": 40.7812,
+    "lon": -73.9665,
+    "zone_type": "neighborhood",
+    "is_tourist_area": true,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645664"
+  },
+  {
+    "location_id": 48,
+    "borough": "Manhattan",
+    "zone": "Penn Station",
+    "lat": 40.7505,
+    "lon": -73.9934,
+    "zone_type": "neighborhood",
+    "is_tourist_area": false,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645665"
+  },
+  {
+    "location_id": 79,
+    "borough": "Manhattan",
+    "zone": "East Village",
+    "lat": 40.7264,
+    "lon": -73.9818,
+    "zone_type": "neighborhood",
+    "is_tourist_area": false,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645666"
+  },
+  {
+    "location_id": 87,
+    "borough": "Manhattan",
+    "zone": "Upper East Side",
+    "lat": 40.7736,
+    "lon": -73.9566,
+    "zone_type": "neighborhood",
+    "is_tourist_area": false,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645666"
+  },
+  {
+    "location_id": 100,
+    "borough": "Manhattan",
+    "zone": "Upper West Side",
+    "lat": 40.787,
+    "lon": -73.9754,
+    "zone_type": "neighborhood",
+    "is_tourist_area": false,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645667"
+  },
+  {
+    "location_id": 132,
+    "borough": "Queens",
+    "zone": "JFK Airport",
+    "lat": 40.6413,
+    "lon": -73.7781,
+    "zone_type": "airport",
+    "is_tourist_area": false,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645668"
+  },
+  {
+    "location_id": 138,
+    "borough": "Queens",
+    "zone": "LaGuardia Airport",
+    "lat": 40.7769,
+    "lon": -73.874,
+    "zone_type": "airport",
+    "is_tourist_area": false,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645669"
+  },
+  {
+    "location_id": 161,
+    "borough": "Manhattan",
+    "zone": "Midtown East",
+    "lat": 40.7549,
+    "lon": -73.9707,
+    "zone_type": "neighborhood",
+    "is_tourist_area": false,
+    "is_business_district": true,
+    "created_at": "2025-08-03T09:25:21.645669"
+  },
+  {
+    "location_id": 162,
+    "borough": "Manhattan",
+    "zone": "Midtown West",
+    "lat": 40.759,
+    "lon": -73.9845,
+    "zone_type": "neighborhood",
+    "is_tourist_area": false,
+    "is_business_district": true,
+    "created_at": "2025-08-03T09:25:21.645670"
+  },
+  {
+    "location_id": 186,
+    "borough": "Manhattan",
+    "zone": "Greenwich Village",
+    "lat": 40.7336,
+    "lon": -74.0027,
+    "zone_type": "neighborhood",
+    "is_tourist_area": true,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645671"
+  },
+  {
+    "location_id": 230,
+    "borough": "Manhattan",
+    "zone": "Lower East Side",
+    "lat": 40.7154,
+    "lon": -73.984,
+    "zone_type": "neighborhood",
+    "is_tourist_area": false,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645671"
+  },
+  {
+    "location_id": 237,
+    "borough": "Manhattan",
+    "zone": "Union Square",
+    "lat": 40.7359,
+    "lon": -73.9911,
+    "zone_type": "neighborhood",
+    "is_tourist_area": true,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645672"
+  },
+  {
+    "location_id": 244,
+    "borough": "Brooklyn",
+    "zone": "Williamsburg",
+    "lat": 40.7081,
+    "lon": -73.9571,
+    "zone_type": "neighborhood",
+    "is_tourist_area": false,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645672"
+  },
+  {
+    "location_id": 263,
+    "borough": "Manhattan",
+    "zone": "Yorkville East",
+    "lat": 40.7736,
+    "lon": -73.9566,
+    "zone_type": "neighborhood",
+    "is_tourist_area": false,
+    "is_business_district": false,
+    "created_at": "2025-08-03T09:25:21.645673"
+  }
+]

@@ -5,15 +5,10 @@ This DAG extracts weather data and loads it to Iceberg tables for correlation wi
 
 from datetime import datetime, timedelta
 import os
-
-# Handle Airflow imports gracefully for development
-try:
-    from airflow import DAG
-    from airflow.operators.python import PythonOperator
-    from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
-    from airflow.providers.postgres.hooks.postgres import PostgresHook
-except ImportError:
-    print("Airflow not available in this environment")
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOperator
+from airflow.providers.postgres.hooks.postgres import PostgresHook
 
 try:
     import pandas as pd

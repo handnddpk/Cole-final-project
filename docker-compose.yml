@@ -1,6 +1,8 @@
 x-airflow-common:
   &airflow-common
-  image: apache/airflow:2.7.1
+  build:
+    context: .
+    dockerfile: Dockerfile.airflow
   environment: &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow/airflow
@@ -11,12 +13,12 @@ x-airflow-common:
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
     AIRFLOW__WEBSERVER__SECRET_KEY: 'your-secret-key-here'
-    _PIP_ADDITIONAL_REQUIREMENTS: ${_PIP_ADDITIONAL_REQUIREMENTS:-apache-airflow-providers-postgres apache-airflow-providers-http apache-airflow-providers-amazon}
+    JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
   volumes:
-    - ./dags:/opt/airflow/dags
-    - ./logs:/opt/airflow/logs
-    - ./config:/opt/airflow/config
-    - ./plugins:/opt/airflow/plugins
+    - ./airflow/dags:/opt/airflow/dags
+    - ./airflow/logs:/opt/airflow/logs
+    - ./airflow/config:/opt/airflow/config
+    - ./airflow/plugins:/opt/airflow/plugins
     - ./spark_jobs:/opt/spark/jobs
     - ./data:/opt/data
   user: "${AIRFLOW_UID:-50000}:0"
@@ -332,6 +334,67 @@ services:
     command: server /data --console-address ":9001"
     volumes:
       - minio_data:/data
+
+  # Analytics API
+  analytics-api:
+    build:
+      context: ./serving
+      dockerfile: Dockerfile
+    container_name: analytics-api
+    command: uvicorn api:app --host 0.0.0.0 --port 8000 --reload
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=taxi_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - AIRFLOW_POSTGRES_HOST=postgres-airflow
+      - AIRFLOW_POSTGRES_PORT=5432
+      - AIRFLOW_POSTGRES_DB=airflow
+      - AIRFLOW_POSTGRES_USER=airflow
+      - AIRFLOW_POSTGRES_PASSWORD=airflow
+      - MINIO_ENDPOINT=minio:9000
+      - MINIO_ACCESS_KEY=admin
+      - MINIO_SECRET_KEY=password
+      - REDIS_URL=redis://redis:6379
+      - API_KEY=demo-api-key-2024
+    volumes:
+      - ./serving:/app
+    depends_on:
+      - postgres
+      - postgres-airflow
+      - redis
+      - minio
+    restart: unless-stopped
+    networks:
+      - default
+
+  # Analytics Dashboard
+  analytics-dashboard:
+    build:
+      context: ./serving
+      dockerfile: Dockerfile
+    container_name: analytics-dashboard
+    command: streamlit run dashboard.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=taxi_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - API_BASE_URL=http://analytics-api:8000/api/v1
+      - API_KEY=demo-api-key-2024
+    volumes:
+      - ./serving:/app
+    depends_on:
+      - analytics-api
+    restart: unless-stopped
+    networks:
+      - default
   
 
 volumes:
