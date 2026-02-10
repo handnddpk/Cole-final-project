@@ -3,6 +3,7 @@ x-airflow-common:
   build:
     context: .
     dockerfile: Dockerfile.airflow
+  entrypoint: /entrypoint.sh
   environment: &airflow-common-env
     AIRFLOW__CORE__EXECUTOR: LocalExecutor
     AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres-airflow/airflow
@@ -13,7 +14,7 @@ x-airflow-common:
     AIRFLOW__API__AUTH_BACKENDS: 'airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session'
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
     AIRFLOW__WEBSERVER__SECRET_KEY: 'your-secret-key-here'
-    JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+    PATH: "/home/airflow/.local/bin:/usr/local/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin"
   volumes:
     - ./airflow/dags:/opt/airflow/dags
     - ./airflow/logs:/opt/airflow/logs
@@ -118,13 +119,15 @@ services:
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
   
   connect:
-    image: confluentinc/cp-kafka-connect:7.9.0
-    user: "0:0"
+    build:
+      context: .
+      dockerfile: Dockerfile.connect
     hostname: connect
     container_name: connect
     depends_on:
       - broker
       - schema-registry
+      - minio-init
     ports:
       - "8083:8083"
     environment:
@@ -143,17 +146,13 @@ services:
       CONNECT_VALUE_CONVERTER_SCHEMA_REGISTRY_URL: http://schema-registry:8081
       CONNECT_PRODUCER_INTERCEPTOR_CLASSES: "io.confluent.monitoring.clients.interceptor.MonitoringProducerInterceptor"
       CONNECT_CONSUMER_INTERCEPTOR_CLASSES: "io.confluent.monitoring.clients.interceptor.MonitoringConsumerInterceptor"
-      CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components,/usr/share/filestream-connectors"
-    command:
-      - bash
-      - -c
-      - |
-        confluent-hub install --no-prompt debezium/debezium-connector-postgresql:latest
-        confluent-hub install --no-prompt clickhouse/clickhouse-kafka-connect:latest
-        confluent-hub install --no-prompt tabular/iceberg-kafka-connect:latest
-        #
-        echo "Launching Kafka Connect..."
-        /etc/confluent/docker/run
+      CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components,/usr/share/filestream-connectors,/usr/share/plugins"
+      # AWS/S3 credentials for MinIO
+      AWS_ACCESS_KEY_ID: admin
+      AWS_SECRET_ACCESS_KEY: password
+      AWS_REGION: us-east-1
+    volumes:
+      - ./plugins:/usr/share/plugins
 
   # PostgreSQL database (source database)
   postgres:
@@ -261,30 +260,15 @@ services:
   # Airflow Init
   airflow-init:
     <<: *airflow-common
-    entrypoint: /bin/bash
     command:
-      - -c
-      - |
-        mkdir -p /sources/logs /sources/dags /sources/plugins
-        chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
-        exec /entrypoint airflow version
-        airflow db init
-        airflow users create \
-          --username airflow \
-          --firstname Airflow \
-          --lastname Admin \
-          --role Admin \
-          --email admin@example.com \
-          --password airflow
+      - db
+      - migrate
     environment:
       <<: *airflow-common-env
       _AIRFLOW_DB_MIGRATE: 'true'
       _AIRFLOW_WWW_USER_CREATE: 'true'
       _AIRFLOW_WWW_USER_USERNAME: airflow
       _AIRFLOW_WWW_USER_PASSWORD: airflow
-    user: "airflow"
-    volumes:
-      - ./:/sources
 
   # Spark Master
   spark-master:
@@ -298,6 +282,7 @@ services:
       - SPARK_SSL_ENABLED=no
     volumes:
       - ./data:/opt/bitnami/spark/data
+      - ./spark_jobs:/opt/spark-apps
     ports:
       - "7077:7077"
     restart: always
@@ -334,6 +319,53 @@ services:
     command: server /data --console-address ":9001"
     volumes:
       - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # MinIO initialization service
+  minio-init:
+    build:
+      context: .
+      dockerfile: Dockerfile.minio-init
+    container_name: minio-init
+    depends_on:
+      minio:
+        condition: service_healthy
+    networks:
+      - default
+    restart: "no"
+
+  # Nessie Catalog Server
+  nessie:
+    image: ghcr.io/projectnessie/nessie:0.77.1
+    container_name: nessie
+    ports:
+      - "19120:19120"
+    environment:
+      # Use in-memory storage for simplicity (use MongoDB/PostgreSQL for production)
+      QUARKUS_PROFILE: prod
+      NESSIE_VERSION_STORE_TYPE: IN_MEMORY
+      # S3 configuration for MinIO
+      QUARKUS_S3_ENDPOINT_OVERRIDE: http://minio:9000
+      QUARKUS_S3_PATH_STYLE_ACCESS: "true"
+      QUARKUS_S3_AWS_REGION: us-east-1
+      QUARKUS_S3_AWS_CREDENTIALS_TYPE: static
+      QUARKUS_S3_AWS_CREDENTIALS_STATIC_PROVIDER_ACCESS_KEY_ID: admin
+      QUARKUS_S3_AWS_CREDENTIALS_STATIC_PROVIDER_SECRET_ACCESS_KEY: password
+    depends_on:
+      - minio-init
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:19120/api/v2/config"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - default
 
   # Analytics API
   analytics-api:

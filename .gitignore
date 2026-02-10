@@ -217,9 +217,14 @@ kafka-logs/
 # Local data directories (adjust as needed)
 data/raw/*
 data/processed/*
-!data/raw/.gitkeep
-!data/processed/.gitkeep
+data/locations/*
+data/weather/*
 
 # Environment specific files
 .env.local
 .env.*.local
+
+
+*.jar
+*.sh
+*.conf

@@ -188,6 +188,7 @@ spark_weather_etl_task = SparkSubmitOperator(
     task_id='spark_process_weather_to_iceberg',
     application='/opt/airflow/dags/spark_jobs/weather_to_iceberg.py',
     conn_id='spark_default',
+    deploy_mode='client',
     conf={
         'spark.sql.catalog.spark_catalog': 'org.apache.iceberg.spark.SparkSessionCatalog',
         'spark.sql.catalog.spark_catalog.type': 'hive',
@@ -202,6 +203,7 @@ spark_weather_etl_task = SparkSubmitOperator(
         'spark.hadoop.fs.s3a.impl': 'org.apache.hadoop.fs.s3a.S3AFileSystem',
     },
     jars='/opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar,/opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar',
+    verbose=True,
     dag=dag,
 )
 
@@ -210,6 +212,7 @@ spark_location_etl_task = SparkSubmitOperator(
     task_id='spark_process_location_to_iceberg',
     application='/opt/airflow/dags/spark_jobs/location_to_iceberg.py',
     conn_id='spark_default',
+    deploy_mode='client',
     conf={
         'spark.sql.catalog.spark_catalog': 'org.apache.iceberg.spark.SparkSessionCatalog',
         'spark.sql.catalog.spark_catalog.type': 'hive',
@@ -224,6 +227,7 @@ spark_location_etl_task = SparkSubmitOperator(
         'spark.hadoop.fs.s3a.impl': 'org.apache.hadoop.fs.s3a.S3AFileSystem',
     },
     jars='/opt/bitnami/spark/jars/iceberg-spark-runtime-3.5_2.12-1.4.2.jar,/opt/bitnami/spark/jars/aws-java-sdk-bundle-1.12.262.jar,/opt/bitnami/spark/jars/hadoop-aws-3.3.4.jar',
+    verbose=True,
     dag=dag,
 )
 

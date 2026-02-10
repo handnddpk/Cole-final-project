@@ -1,0 +1,74 @@
+FROM confluentinc/cp-kafka-connect:7.9.0
+
+USER root
+
+# Install Debezium connector
+RUN confluent-hub install --no-prompt debezium/debezium-connector-postgresql:latest
+
+# Install ClickHouse connector
+RUN confluent-hub install --no-prompt clickhouse/clickhouse-kafka-connect:latest
+
+# Download Iceberg dependencies manually
+ENV ICEBERG_VERSION=1.8.1
+ENV KAFKA_ICEBERG_VERSION=1.8.1
+ENV NESSIE_VERSION=0.77.1
+ENV AWS_SDK_VERSION=2.20.100
+
+# Create Iceberg connector directory
+RUN mkdir -p /usr/share/confluent-hub-components/iceberg-kafka-connect/lib && \
+    mkdir -p /usr/share/confluent-hub-components/iceberg-kafka-connect/etc
+
+# Download Iceberg connector and dependencies
+RUN cd /tmp && \
+    # Iceberg Kafka Connect Sink Connector
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-kafka-connect/${KAFKA_ICEBERG_VERSION}/iceberg-kafka-connect-${KAFKA_ICEBERG_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-kafka-connect-events/${KAFKA_ICEBERG_VERSION}/iceberg-kafka-connect-events-${KAFKA_ICEBERG_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-kafka-connect-runtime/${KAFKA_ICEBERG_VERSION}/iceberg-kafka-connect-runtime-${KAFKA_ICEBERG_VERSION}.jar && \
+    # Core Iceberg libraries
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-core/${ICEBERG_VERSION}/iceberg-core-${ICEBERG_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-api/${ICEBERG_VERSION}/iceberg-api-${ICEBERG_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-common/${ICEBERG_VERSION}/iceberg-common-${ICEBERG_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-bundled-guava/${ICEBERG_VERSION}/iceberg-bundled-guava-${ICEBERG_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-parquet/${ICEBERG_VERSION}/iceberg-parquet-${ICEBERG_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-aws/${ICEBERG_VERSION}/iceberg-aws-${ICEBERG_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-data/${ICEBERG_VERSION}/iceberg-data-${ICEBERG_VERSION}.jar && \
+
+    # Nessie catalog
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-nessie/${ICEBERG_VERSION}/iceberg-nessie-${ICEBERG_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/org/projectnessie/nessie/nessie-client/${NESSIE_VERSION}/nessie-client-${NESSIE_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/org/projectnessie/nessie/nessie-model/${NESSIE_VERSION}/nessie-model-${NESSIE_VERSION}.jar && \
+    # AWS SDK v2 (required for S3FileIO with Nessie)
+    curl -O https://repo1.maven.org/maven2/software/amazon/awssdk/bundle/${AWS_SDK_VERSION}/bundle-${AWS_SDK_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/software/amazon/awssdk/url-connection-client/${AWS_SDK_VERSION}/url-connection-client-${AWS_SDK_VERSION}.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-aws-bundle/${ICEBERG_VERSION}/iceberg-aws-bundle-${ICEBERG_VERSION}.jar && \
+    # Parquet dependencies
+    curl -O https://repo1.maven.org/maven2/org/apache/parquet/parquet-column/1.17.0/parquet-column-1.17.0.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/parquet/parquet-hadoop/1.17.0/parquet-hadoop-1.17.0.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/parquet/parquet-avro/1.17.0/parquet-avro-1.17.0.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/parquet/parquet-common/1.17.0/parquet-common-1.17.0.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/parquet/parquet-encoding/1.17.0/parquet-encoding-1.17.0.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/parquet/parquet-format-structures/1.17.0/parquet-format-structures-1.17.0.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/parquet/parquet-jackson/1.17.0/parquet-jackson-1.17.0.jar && \
+    # Additional dependencies
+    curl -O https://repo1.maven.org/maven2/org/apache/avro/avro/1.11.1/avro-1.11.1.jar && \
+    curl -O https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-databind/2.14.2/jackson-databind-2.14.2.jar && \
+    curl -O https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.14.2/jackson-core-2.14.2.jar && \
+    curl -O https://repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-annotations/2.14.2/jackson-annotations-2.14.2.jar && \
+    curl -O https://repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar && \
+    curl -O https://repo1.maven.org/maven2/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar && \
+    curl -O https://repo1.maven.org/maven2/org/locationtech/jts/jts-core/1.19.0/jts-core-1.19.0.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.4.14/httpcore-4.4.14.jar && \
+    curl -O https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-common/3.2.2/hadoop-common-3.2.2.jar && \
+
+    # Failsafe library (required by Iceberg connector)
+    curl -O https://repo1.maven.org/maven2/dev/failsafe/failsafe/3.3.2/failsafe-3.3.2.jar && \
+    # Move all JARs to connector lib directory
+    mv *.jar /usr/share/confluent-hub-components/iceberg-kafka-connect/lib/
+
+# Set proper permissions
+RUN chown -R appuser:appuser /usr/share/confluent-hub-components/iceberg-kafka-connect
+
+USER appuser
+
+CMD ["/etc/confluent/docker/run"]
